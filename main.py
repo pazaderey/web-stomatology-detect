@@ -28,7 +28,7 @@ def main():
     result = service.predict(images)
 
     _, img_encoded = cv2.imencode('.png', result[0])
-    response = img_encoded.tostring()
+    response = img_encoded.tobytes()
 
     try:
         return Response(response=response, status=200, mimetype='image/png')
