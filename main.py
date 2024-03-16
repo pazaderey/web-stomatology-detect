@@ -1,5 +1,5 @@
 from flask import Flask, request, Response, abort
-from .detection_service import DetectionService
+from detection_service import DetectionService
 import tensorflow as tf
 import cv2
 import numpy as np
@@ -13,6 +13,7 @@ service = DetectionService(MODEL_PATH)
 @app.route("/detect-service", methods=['GET'])
 def main():
     image = request.files["images"]
+    print('Got request ' + request)
     image_name = image.filename
     img_raw = tf.image.decode_image(
         open(image_name, 'rb').read(), channels=3)
@@ -37,3 +38,4 @@ def main():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
+    print('Started')

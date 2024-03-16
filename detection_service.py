@@ -4,7 +4,7 @@ import cv2
 
 class DetectionService:
     def __init__(self, model_path: str):
-        self.model = keras.models.load_model(model_path, compile=False)
+        self.model = keras.models.load_model(model_path)
         self.model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     def predict(self, images):
