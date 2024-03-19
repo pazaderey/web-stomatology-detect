@@ -1,10 +1,10 @@
-FROM python:3.10.13-alpine3.18
+FROM tensorflow/tensorflow:2.15.0
 
 WORKDIR /home/web-stomatology
 
 COPY requirements.txt /home/web-stomatology
 
-RUN pip3 install --upgrade pip -r requirements.txt
+RUN pip install -r requirements.txt --ignore-installed
 
 COPY . /home/web-stomatology
 
